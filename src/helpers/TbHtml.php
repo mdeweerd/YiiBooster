@@ -2711,8 +2711,10 @@ EOD;
     public static function icon($icon, $htmlOptions = array(), $tagName = 'i')
     {
         if (is_string($icon)) {
-            if (strpos($icon, 'icon') === false && strpos($icon, 'fa') === false) {
-                $icon = 'icon-' . implode(' icon-', explode(' ', $icon));
+            if (strpos($icon, 'icon-') === 0) {
+                $icon = 'glyphicon glyph' . implode(' glyph', explode(' ', $icon));
+            } else if (strpos($icon, 'icon') === false && strpos($icon, 'fa') === false) {
+                $icon = 'glyphicon glyphicon-' . implode(' glyphicon-', explode(' ', $icon));
             }
             self::addCssClass($icon, $htmlOptions);
             $color = TbArray::popValue('color', $htmlOptions);
