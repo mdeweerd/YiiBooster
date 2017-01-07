@@ -9,14 +9,14 @@
  */
 
 Yii::import('booster.widgets.TbEditableField');
-Yii::import('zii.widgets.CDetailView');
+Yii::import('booster.widgets.TbDetailView');
 
 /**
  * TbEditableDetailView widget makes editable CDetailView (several attributes of single model shown as name-value table).
  *
  * @package widgets
  */
-class TbEditableDetailView extends CDetailView
+class TbEditableDetailView extends TbDetailView
 {
 
     public function init()
@@ -24,13 +24,6 @@ class TbEditableDetailView extends CDetailView
         if (!$this->data instanceof CModel) {
             throw new CException('Property "data" should be of CModel class.');
         }
-
-        //set bootstrap css
-        /* TODO if(yii::app()->editable->form === 'bootstrap') { */
-            $this->htmlOptions = array('class'=> 'table table-bordered table-striped table-hover');
-            //disable loading Yii's css for bootstrap
-            $this->cssFile = false;
-        // }
 
         parent::init();
     }
